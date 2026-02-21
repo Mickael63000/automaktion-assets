@@ -101,88 +101,99 @@
 }
 .amk-cta:hover{filter:brightness(1.05)}
 
+/* =========================
+   HERO (COMPLET) — +15% SANS retour à la ligne du titre
+   et SANS augmenter la hauteur / le fond
+   ========================= */
+
 /* Hero */
-.amk-hero{padding:28px 18px 10px;}
+.amk-hero{ padding:28px 18px 10px; }
 
 .amk-heroInner{
   border-radius: var(--radius2);
-  overflow:hidden;
+  overflow: hidden;
   box-shadow: var(--shadow);
   background:
     linear-gradient(to right, rgba(11,4,38,.90), rgba(11,4,38,.45) 58%, rgba(11,4,38,.05)),
     url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2400&q=60");
   background-size: cover;
   background-position: center;
-  min-height: 380px;          
-  display:flex;
-  align-items:flex-end;
-  position:relative;
+
+  min-height: 380px;         /* NE PAS CHANGER => le fond ne “grandit” pas */
+  display: flex;
+  align-items: flex-end;     /* on garde le bloc en bas */
+  position: relative;
 }
 
 .amk-heroContent{
-  padding:26px;               /* 26 -> ~+15% */
-  max-width:920px;
-  position:relative;
-  z-index:1
+  padding: 30px 26px;        /* +15% vertical uniquement, sans toucher au fond */
+  max-width: 1100px;         /* plus large => réduit les risques de retour à la ligne */
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
+/* Kicker +15% */
 .amk-kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;                    /* 8 -> ~+15% */
-  font-size:14px;             /* 12 -> ~+15% */
-  color:rgba(249,248,255,.82);
-  background:rgba(249,248,255,.06);
-  border:1px solid rgba(249,248,255,.12);
-  padding:9px 14px;           /* 8/12 -> ~+15% */
-  border-radius:999px;
-  margin-bottom:14px;         /* 12 -> ~+15% */
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;                  /* 8 -> + */
+  font-size: 14px;           /* 12 -> + */
+  color: rgba(249,248,255,.82);
+  background: rgba(249,248,255,.06);
+  border: 1px solid rgba(249,248,255,.12);
+  padding: 9px 14px;         /* 8/12 -> + */
+  border-radius: 999px;
+  margin-bottom: 14px;       /* 12 -> + */
   backdrop-filter: blur(10px);
   font-family: var(--font-title);
-  letter-spacing:.2px;
+  letter-spacing: .2px;
   text-transform: uppercase;
 }
 
+/* Titre : +15% MAIS UNE SEULE LIGNE */
 .amk-heroTitle{
-  margin:0 0 12px;            /* 10 -> ~+15% */
-font-size: clamp(22px, 4.8vw, 39px);  /* <-- monte jusqu’à 39px, mais rétrécit sur petits écrans */
-  line-height:1.10;
+  margin: 0 0 12px;
+  font-size: 39px;           /* +15% */
+  line-height: 1.10;
   font-family: var(--font-title);
-  letter-spacing:.2px;
+  letter-spacing: .2px;
   text-transform: uppercase;
-  white-space: nowrap;                 /* <-- interdit le retour à la ligne */
-  max-width: 100%;
+
+  white-space: nowrap;       /* interdit le retour à la ligne */
 }
 
+/* Texte +15% */
 .amk-heroText{
-  margin:0 0 18px;            /* 16 -> ~+15% */
-  color:rgba(249,248,255,.78);
-  font-size:16px;             /* 14 -> ~+15% */
-  line-height:1.55
+  margin: 0 0 18px;
+  color: rgba(249,248,255,.78);
+  font-size: 16px;           /* 14 -> + */
+  line-height: 1.55;
 }
 
+/* Boutons +15% */
 .amk-heroButtons{
-  display:flex;
-  gap:12px;                   /* 10 -> ~+15% */
-  flex-wrap:wrap
+  display: flex;
+  gap: 12px;                 /* 10 -> + */
+  flex-wrap: wrap;
 }
 
 .amk-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;                   /* 10 -> ~+15% */
-  padding:13px 16px;          /* 11/14 -> ~+15% */
-  border-radius:16px;         /* 14 -> ~+15% */
-  border:1px solid rgba(249,248,255,.14);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;                 /* 10 -> + */
+  padding: 13px 16px;        /* 11/14 -> + */
+  border-radius: 16px;       /* 14 -> + */
+  border: 1px solid rgba(249,248,255,.14);
   background: rgba(249,248,255,.08);
   color: var(--text);
   font-weight: 800;
-  font-size:15px;             /* 13 -> ~+15% */
+  font-size: 15px;           /* 13 -> + */
   cursor: pointer;
-  text-decoration:none;
+  text-decoration: none;
 }
 
-.amk-btn:hover{background: rgba(249,248,255,.12)}
+.amk-btn:hover{ background: rgba(249,248,255,.12); }
 
 .amk-btnPrimary{
   background: linear-gradient(135deg, var(--green), rgba(80,234,178,.70));
@@ -191,7 +202,25 @@ font-size: clamp(22px, 4.8vw, 39px);  /* <-- monte jusqu’à 39px, mais rétré
   box-shadow: 0 18px 46px rgba(80,234,178,.22);
 }
 
-.amk-btnPrimary:hover{filter:brightness(1.05)}
+.amk-btnPrimary:hover{ filter: brightness(1.05); }
+
+/* IMPORTANT : sur petits écrans, une seule ligne peut déborder.
+   => on réduit la taille automatiquement plutôt que de retourner à la ligne */
+@media (max-width: 900px){
+  .amk-heroTitle{
+    font-size: 32px;         /* réduit */
+  }
+}
+@media (max-width: 700px){
+  .amk-heroTitle{
+    font-size: 26px;         /* réduit encore */
+  }
+}
+@media (max-width: 520px){
+  .amk-heroTitle{
+    font-size: 22px;         /* réduit encore, toujours 1 ligne */
+  }
+}
 /* Rows */
 .amk-section{padding:6px 0 18px}
 .amk-rowHead{
