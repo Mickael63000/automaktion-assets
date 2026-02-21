@@ -274,40 +274,50 @@
 .amk-etaViolet{background: rgba(99,40,229,.14); border-color: rgba(99,40,229,.35);}
 .amk-etaViolet svg{stroke: rgba(99,40,229,.85);}
 
-/* PACKS : plus grands que le reste (sans étirer) */
-.amk-packsRail .amk-card{
-  flex: 0 0 320px;     /* + large */
-  max-width: 320px;
-}
-
-.amk-packsRail .amk-thumb{
-  aspect-ratio: 16 / 9;
-  height: auto;
-}
-
-/* Optionnel : un peu plus de hauteur perçue (sans déformer l'image) */
-.amk-packsRail .amk-desc{
-  max-height: calc(1.35em * 3);
-  min-height: calc(1.35em * 3);
-}
-
-/* Avatar : à droite, colonne fixe */
+/* ===== PACKS (VERSION STABLE) : 3 colonnes + avatar à droite, sans étirement ===== */
 .amk-packsGrid{
-  grid-template-columns: minmax(0, 980px) 360px; /* un peu plus large côté packs */
+  display:grid;
+  grid-template-columns: minmax(0, 840px) 360px;  /* zone packs limitée + avatar fixe */
+  gap: 56px;                                      /* air avant l’avatar */
+  padding: 4px 18px 18px;
+  align-items: start;
+}
+
+.amk-packsRail{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 840px;     /* empêche l’étirement */
+  width: 100%;
+  justify-self: start;
+}
+
+/* IMPORTANT : évite les débordements / comportements bizarres dans une grille */
+.amk-packsRail .amk-card{
+  min-width: 0;
+  max-width: none;
+  width: 100%;
+}
+
+/* Thumbnails packs : ratio propre, pas de déformation */
+.amk-packsRail .amk-thumb{
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 
 .amk-aside{
-  justify-self: end;
+  justify-self: end;   /* avatar bien à droite */
 }
+
 @media (max-width:1100px){
   .amk-packsGrid{ grid-template-columns: 1fr; gap: 14px; }
   .amk-aside{ justify-self: stretch; }
   .amk-aside iframe{ height: 260px; }
-  .amk-packsRail .amk-card{ flex-basis: 320px; max-width: 320px; }
+  .amk-packsRail{ max-width: 100%; }
 }
 
-@media (max-width:520px){
-  .amk-packsRail .amk-card{ flex-basis: 92%; max-width: 92%; }
+@media (max-width:780px){
+  .amk-packsRail{ grid-template-columns: 1fr; }
 }
 /* Modal */
 .amk-overlay{
