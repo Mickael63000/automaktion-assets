@@ -274,13 +274,11 @@
 .amk-etaViolet{background: rgba(99,40,229,.14); border-color: rgba(99,40,229,.35);}
 .amk-etaViolet svg{stroke: rgba(99,40,229,.85);}
 
-/* Packs layout */
-/* Packs : plus équilibré (pas étiré) + plus d’air avant l’avatar */
 /* PACKS = CARROUSEL (cartes fixes, pas étirées) + avatar à droite avec air */
 .amk-packsGrid{
   display:grid;
   grid-template-columns: minmax(0, 920px) 360px;
-  gap: 56px;                 /* espace avant l'avatar */
+  gap: 56px;
   padding: 4px 18px 18px;
   align-items: start;
 }
@@ -292,39 +290,32 @@
   width: 100%;
   justify-self: start;
 
-  overflow-x: auto;          /* carrousel */
+  overflow-x: auto;
   overflow-y: visible;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding-bottom: 10px;      /* place pour scrollbar */
+  padding-bottom: 10px;
 }
 
-/* Cartes packs : largeur fixe (donc jamais “trop longues”) */
 .amk-packsRail .amk-card{
-  flex: 0 0 260px;           /* ajuste à 240/280 si tu veux */
+  flex: 0 0 260px;
   max-width: 260px;
   scroll-snap-align: start;
 }
 
-/* Thumbnails packs : ratio stable (plus joli) */
 .amk-packsRail .amk-thumb{
   height: auto;
   aspect-ratio: 16 / 9;
 }
 
-/* Optionnel : scrollbar discrète */
 .amk-packsRail::-webkit-scrollbar{ height: 10px; }
 .amk-packsRail::-webkit-scrollbar-thumb{
   background: rgba(249,248,255,.12);
   border-radius: 999px;
 }
 
-/* Avatar bien calé à droite */
-.amk-aside{
-  justify-self: end;
-}
+.amk-aside{ justify-self: end; }
 
-/* Responsive */
 @media (max-width:1100px){
   .amk-packsGrid{ grid-template-columns: 1fr; gap: 14px; }
   .amk-aside iframe{ height: 260px; }
@@ -335,7 +326,6 @@
 @media (max-width:520px){
   .amk-packsRail .amk-card{ flex-basis: 88%; max-width: 88%; }
 }
-
 /* Modal */
 .amk-overlay{
   position:fixed; inset:0;
