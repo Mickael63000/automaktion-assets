@@ -308,7 +308,7 @@
   grid-column: 3;
   grid-row: 1;
   justify-self: end;
-  width: 390px;
+  width: 460px;
 
   border-radius: var(--radius);
   overflow: hidden;
