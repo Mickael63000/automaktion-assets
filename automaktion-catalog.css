@@ -303,12 +303,12 @@
   aspect-ratio: 16 / 9;
 }
 
-/* Avatar à droite : FORCÉ en colonne 2 + dans une tuile */
+/* Avatar à droite : FORCÉ en colonne 3 + dans une tuile */
 .amk-packsGrid > .amk-aside{
   grid-column: 3;
   grid-row: 1;
   justify-self: end;
-  width: 360px;
+  width: 390px;
 
   border-radius: var(--radius);
   overflow: hidden;
