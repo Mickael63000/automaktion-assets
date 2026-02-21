@@ -325,7 +325,8 @@
         '<div class="amk-rowHead"><h2>PACKS RECOMMANDÉS</h2><small></small></div>' +
         '<div class="amk-packsGrid">' +
           '<div class="amk-packsRail" data-rail="recommended"></div>' +
-          '<aside class="amk-aside"><iframe loading="lazy" src="https://embed.liveavatar.com/v1/1611b11a-ad39-4b79-90fd-e01872e58c36" allow="microphone" title="LiveAvatar Embed" style="aspect-ratio: 16/9;"></iframe></aside>' +
+          '<aside class="amk-aside"><iframe loading="lazy" src="https://embed.liveavatar.com/v1/6d33fe25-77c6-4c59-b365-74be2c1ec693" allow="microphone" title="LiveAvatar Embed" style="aspect-ratio: 16/9;"></iframe>
+</aside>' +
         '</div>' +
 
       '</section>' +
