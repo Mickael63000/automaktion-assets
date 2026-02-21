@@ -113,14 +113,14 @@
     url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2400&q=60");
   background-size: cover;
   background-position: center;
-  min-height: 440px;          /* 380 -> ~+15% */
+  min-height: 380px;          
   display:flex;
   align-items:flex-end;
   position:relative;
 }
 
 .amk-heroContent{
-  padding:30px;               /* 26 -> ~+15% */
+  padding:26px;               /* 26 -> ~+15% */
   max-width:920px;
   position:relative;
   z-index:1
@@ -145,11 +145,13 @@
 
 .amk-heroTitle{
   margin:0 0 12px;            /* 10 -> ~+15% */
-  font-size:39px;             /* 34 -> ~+15% */
+font-size: clamp(22px, 4.8vw, 39px);  /* <-- monte jusqu’à 39px, mais rétrécit sur petits écrans */
   line-height:1.10;
   font-family: var(--font-title);
   letter-spacing:.2px;
   text-transform: uppercase;
+  white-space: nowrap;                 /* <-- interdit le retour à la ligne */
+  max-width: 100%;
 }
 
 .amk-heroText{
