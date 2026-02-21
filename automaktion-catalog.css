@@ -274,45 +274,65 @@
 .amk-etaViolet{background: rgba(99,40,229,.14); border-color: rgba(99,40,229,.35);}
 .amk-etaViolet svg{stroke: rgba(99,40,229,.85);}
 
-/* ===== PACKS (VERSION STABLE) : 3 colonnes + avatar à droite, sans étirement ===== */
+/* ===== PACKS (STABLE) : 3 packs à gauche + AVATAR EN TUILE à droite ===== */
 .amk-packsGrid{
-  display:grid;
-  grid-template-columns: minmax(0, 840px) 360px;  /* zone packs limitée + avatar fixe */
-  gap: 56px;                                      /* air avant l’avatar */
+  display: grid;
+  grid-template-columns: minmax(0, 840px) 360px; /* packs | avatar */
+  gap: 56px;
   padding: 4px 18px 18px;
   align-items: start;
 }
 
+/* Packs à gauche */
 .amk-packsRail{
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  max-width: 840px;     /* empêche l’étirement */
+  max-width: 840px;
   width: 100%;
   justify-self: start;
 }
-
-/* IMPORTANT : évite les débordements / comportements bizarres dans une grille */
 .amk-packsRail .amk-card{
-  min-width: 0;
-  max-width: none;
+  min-width: 0;   /* anti débordement / superposition */
   width: 100%;
 }
 
-/* Thumbnails packs : ratio propre, pas de déformation */
+/* Thumbnails packs : ratio propre, pas d’étirement */
 .amk-packsRail .amk-thumb{
   height: auto;
   aspect-ratio: 16 / 9;
 }
 
-.amk-aside{
-  justify-self: end;   /* avatar bien à droite */
+/* Avatar à droite : FORCÉ en colonne 2 + dans une tuile */
+.amk-packsGrid > .amk-aside{
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  width: 360px;
+
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(249,248,255,.04);
+  border: 1px solid rgba(249,248,255,.10);
+  box-shadow: 0 18px 55px rgba(0,0,0,.35);
+}
+.amk-packsGrid > .amk-aside iframe{
+  width: 100%;
+  height: 250px;
+  border: 0;
+  display: block;
+  background: transparent;
 }
 
+/* Responsive : avatar en dessous */
 @media (max-width:1100px){
   .amk-packsGrid{ grid-template-columns: 1fr; gap: 14px; }
-  .amk-aside{ justify-self: stretch; }
-  .amk-aside iframe{ height: 260px; }
+  .amk-packsGrid > .amk-aside{
+    grid-column: 1;
+    width: 100%;
+    justify-self: stretch;
+  }
+  .amk-packsGrid > .amk-aside iframe{ height: 260px; }
   .amk-packsRail{ max-width: 100%; }
 }
 
