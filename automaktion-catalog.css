@@ -305,7 +305,7 @@
 
 /* Avatar à droite : FORCÉ en colonne 2 + dans une tuile */
 .amk-packsGrid > .amk-aside{
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1;
   justify-self: end;
   width: 360px;
