@@ -276,38 +276,64 @@
 
 /* Packs layout */
 /* Packs : plus équilibré (pas étiré) + plus d’air avant l’avatar */
+/* PACKS = CARROUSEL (cartes fixes, pas étirées) + avatar à droite avec air */
 .amk-packsGrid{
   display:grid;
-  grid-template-columns: minmax(0, 840px) 360px; /* limite la zone packs */
-  gap: 56px; /* espace entre packs et avatar */
+  grid-template-columns: minmax(0, 920px) 360px;
+  gap: 56px;                 /* espace avant l'avatar */
   padding: 4px 18px 18px;
   align-items: start;
 }
 
 .amk-packsRail{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  display:flex;
   gap: 14px;
-  max-width: 840px;     /* empêche l’étirement */
+  max-width: 920px;
   width: 100%;
-  justify-self: start;  /* ne colle pas à l’avatar */
+  justify-self: start;
+
+  overflow-x: auto;          /* carrousel */
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;      /* place pour scrollbar */
 }
 
-/* Thumbnails packs : ratio fixe plus joli */
+/* Cartes packs : largeur fixe (donc jamais “trop longues”) */
+.amk-packsRail .amk-card{
+  flex: 0 0 260px;           /* ajuste à 240/280 si tu veux */
+  max-width: 260px;
+  scroll-snap-align: start;
+}
+
+/* Thumbnails packs : ratio stable (plus joli) */
 .amk-packsRail .amk-thumb{
   height: auto;
   aspect-ratio: 16 / 9;
 }
 
-/* Avatar calé à droite */
+/* Optionnel : scrollbar discrète */
+.amk-packsRail::-webkit-scrollbar{ height: 10px; }
+.amk-packsRail::-webkit-scrollbar-thumb{
+  background: rgba(249,248,255,.12);
+  border-radius: 999px;
+}
+
+/* Avatar bien calé à droite */
 .amk-aside{
   justify-self: end;
 }
 
+/* Responsive */
 @media (max-width:1100px){
-  .amk-packsGrid{ grid-template-columns: 1fr; gap:14px; }
-  .amk-aside iframe{ height:260px; }
+  .amk-packsGrid{ grid-template-columns: 1fr; gap: 14px; }
+  .amk-aside iframe{ height: 260px; }
   .amk-packsRail{ max-width: 100%; }
+  .amk-packsRail .amk-card{ flex-basis: 280px; max-width: 280px; }
+}
+
+@media (max-width:520px){
+  .amk-packsRail .amk-card{ flex-basis: 88%; max-width: 88%; }
 }
 
 /* Modal */
