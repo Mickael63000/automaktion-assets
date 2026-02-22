@@ -127,7 +127,7 @@
 
 .amk-heroContent{
   padding: 30px 26px;        /* +15% vertical uniquement, sans toucher au fond */
-  max-width: 1100px;         /* plus large => réduit les risques de retour à la ligne */
+  max-width: 800px;         /* plus large => réduit les risques de retour à la ligne */
   width: 100%;
   position: relative;
   z-index: 1;
@@ -345,22 +345,35 @@
 
 /* Packs à gauche */
 .amk-packsRail{
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  max-width: 840px;
+  gap: 12px;
+  overflow-x: auto;              /* scroll horizontal comme Services */
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;          /* laisse la place à la scrollbar */
+  max-width: 840px;              /* ou 920px selon ton layout */
   width: 100%;
   justify-self: start;
 }
 .amk-packsRail .amk-card{
-  min-width: 0;   /* anti débordement / superposition */
-  width: 100%;
+  flex: 0 0 260px;               /* largeur fixe -> stable sur tous devices */
+  max-width: 260px;
+  min-width: 260px;
+  scroll-snap-align: start;
 }
+/* scrollbar discrète (optionnel) */
+.amk-packsRail::-webkit-scrollbar{ height: 10px; }
+.amk-packsRail::-webkit-scrollbar-thumb{
+  background: rgba(249,248,255,.12);
+  border-radius: 999px;
 
 /* Thumbnails packs : ratio propre, pas d’étirement */
-.amk-packsRail .amk-thumb{
-  height: auto;
-  aspect-ratio: 16 / 9;
+  flex: 0 0 260px;               /* largeur fixe -> stable sur tous devices */
+  max-width: 260px;
+  min-width: 260px;
+  scroll-snap-align: start;
 }
 
 /* Avatar à droite : FORCÉ en colonne 3 + dans une tuile */
@@ -397,8 +410,13 @@
   .amk-packsRail{ max-width: 100%; }
 }
 
-@media (max-width:780px){
-  .amk-packsRail{ grid-template-columns: 1fr; }
+@media (max-width:520px){
+  .amk-packsRail .amk-card{
+    flex-basis: 88%;
+    min-width: 88%;
+    max-width: 88%;
+  }
+
 }
 /* Modal */
 .amk-overlay{
